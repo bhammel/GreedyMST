@@ -1,7 +1,7 @@
 CXX         = g++
 CFLAGS      = -g -Wall
 EXECUTABLES = executeit
-USER_OBJS   = main.o
+USER_OBJS   = main.o FILI.o KILI.o PILI.o SILI.o YILI.o
 
 all: $(EXECUTABLES)
 

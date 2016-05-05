@@ -7,16 +7,13 @@
 
 #include <cstdlib>
 #include <iostream>
+#include "KILI.hpp"
+#include "PILI.hpp"
+#include "SILI.hpp"
+#include "FILI.hpp"
+#include "YILI.hpp"
 
 using namespace std;
-
-enum Methods {
-	KILI = 1,
-	PILI = 2,
-	SILI = 3,
-	FILI = 4,
-	YILI = 5
-};
 
 int main(int argc, char **argv) {
 	int method, numVertices, numEdges, k, output;
@@ -34,6 +31,8 @@ int main(int argc, char **argv) {
 		exit(2);
 	}
 
+	KILI *kili = new KILI(numVertices, numEdges, k);
+
 	for (int i = 0; i < numEdges; i++) {
 		cin >> vertex1 >> vertex2;
 
@@ -43,8 +42,10 @@ int main(int argc, char **argv) {
 			weights[j] = weight;
 		}
 
-		delete[] weights;
+		kili->addEdge(i, vertex1, vertex2, weights);
 	}
+
+	kili->sortEdges();
 
 	return 0;
 }
