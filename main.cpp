@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 			weights[j] = weight;
 		}
 
-		kili->addEdge(i, vertex1, vertex2, weights);
+		kili->addEdge(vertex1, vertex2, weights);
 	}
 
 	kili->sortEdges();

@@ -24,6 +24,7 @@ private:
 	int *weightVector;
 	adjacency *accepted;
 	int ofv;
+	int currentIndex;
 
 	void mergeSort(adjacency *a, int n);
 	void mergePass(adjacency *x, adjacency *y, int n, int segmentSize);
@@ -33,7 +34,7 @@ private:
 public:
 	KILI(int numNodes, int numEdges, int k);
 	~KILI();
-	void addEdge(int i, int node1, int node2, int *weights);
+	void addEdge(int node1, int node2, int *weights);
 	void sortEdges();
 	bool findMST();
 	void print(int type);

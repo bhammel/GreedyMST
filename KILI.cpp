@@ -17,6 +17,7 @@ KILI::KILI(int numNodes, int numEdges, int k) {
 	this->weightVector = new int[k]();
 	this->accepted = new adjacency[numNodes - 1]();
 	this->ofv = 0;
+	this->currentIndex = 0;
 }
 
 KILI::~KILI() {
@@ -25,13 +26,13 @@ KILI::~KILI() {
 	delete[] accepted;
 }
 
-void KILI::addEdge(int i, int node1, int node2, int *weights) {
-	if (i < 0 || i >= this->numEdges) {
-		cerr << "Error: Cannot add edge at index " << i << " to graph" << endl;
+void KILI::addEdge(int node1, int node2, int *weights) {
+	if (this->currentIndex < 0 || this->currentIndex >= this->numEdges) {
+		cerr << "Error: Cannot add edge at index " << this->currentIndex << " to graph" << endl;
 		exit(1);
 	}
 
-	this->graph[i] = adjacency(edge(node1, node2), weights);
+	this->graph[this->currentIndex++] = adjacency(edge(node1, node2), weights);
 }
 
 void KILI::sortEdges() {
